@@ -1,0 +1,50 @@
+//*****************************************************************************//
+//===============================BOUCLE DU TIMER===============================//
+//*****************************************************************************//
+
+{Procédure principale du jeu, Schéma coordinatif de l'ensemble du jeu}
+procedure TF_Jeu.Timer1Timer(Sender: TObject);
+begin
+//Randomisation de l'ordre de passage
+//On fait la boucle pour tous les joueurs
+        //Si le joueur est actif
+                //alors on peut agir sur lui (actif)
+                        //Si le joueur est humain
+                                //Alors test des touches
+                                        //Si le joueur est au contact
+                                                //Alors il faut déterminer ce qu'il touche
+                                                        //Si il touche un ennemi
+                                                                //Alors combat possible
+                                                                        //Si combat désiré (touche frapper enfoncée)
+                                                                                //Alors module de combat et mise a jour de la structure d'affichage
+                                                                                //Sinon déplacement
+                                                                                        //Si déplacement désiré (touche déplacement enfoncée) et déplacement possible
+                                                                                                //Alors déplacement et mise a jour de la structure d'affichage
+                                                                //Sinon interaction avec un artefact
+                                                //Sinon déplacement possible
+                                                        //Si déplacement désiré (touche déplacement enfoncée) et déplacement possible
+                                                                //Alors déplacement et mise a jour de la structure d'affichage
+                                //Sinon c'est un bot
+                                        //Si le bot est au contact
+                                                //Alors il faut déterminer ce qu'il touche
+                                                        //Si il touche un ennemi
+                                                                //Alors combat possible
+                                                                        //Si combat désiré (1°Element de la liste des priorités)
+                                                                                //Alors module de combat
+                                                                                //Sinon déplacement possible
+                                                                                        //Si la case suivante est occupée
+                                                                                                //Alors calcul d'un nouveau chemin
+                                                                                        //Déplacement avec mise a jour de la structure d'affichage
+                                                                //Sinon interaction avec un artefact
+                                                //Sinon déplacement
+                                                        //Si la case suivante est occupée
+                                                                //Alors calcul d'un nouveau chemin
+                                                        //Déplacement avec mise a jour de la structure d'affichage
+                //Sinon on ne peut pas agir sur lui (inactif)
+//Mise à jour des éléments à afficher en fonction du timer
+//Affichage
+end;
+
+//*****************************************************************************//
+//===============================FIN BOUCLE DU TIMER===========================//
+//*****************************************************************************//

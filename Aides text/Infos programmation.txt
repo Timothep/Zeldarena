@@ -1,0 +1,66 @@
+Attention, la matrice correspondant aux cartes est inversée par rapport a sa diagonale
+
+Faire un Splash Screen pour le chargement des cartes pourrait être une bonne idée
+
+Calcul du Temps Processeur
+>  A:=GetTickCount;
+>  MaProcedure1;
+>  ...
+>  MaProcedure2;
+>  B:=GetTickCount;
+>  ShowMessage(inttostr(B-A));
+
+(En Milisecondes)
+
+//Showmessage('Current Directory: '+GetCurrentDir);
+
+
+Tester la création de cartes en ajoutant un TImageList pour voir si ça accélère le système ou pas.
+
+Jouer les animations plusieurs fois par tour de Timer pour accélérer le mouvement si besoin
+Prévoir une condition de sécurité si en cours de destruction des bitmaps
+
+Ecrire du texte sur un fond en image
+	Canvas.brush.style:=BSclear; //rend le fond transparent
+	Canvas.textout(X,Y,'Texte'); //Ecrit Texte en X,y sur le fond transparents
+
+Faire un Splash screen lors du chargement de toutes les données, ça peut prendre du temps
+
+------------------------------------------------------------------------------------------------
+VK_LBUTTON : bouton Gauche Souris
+VK_RBUTTON : bouton Droite Souris
+VK_MBUTTON : bouton Central Souris
+VK_CANCEL : Arrêt Exec. programme
+VK_BACK : Retour Arrière
+VK_TAB : Tabulation
+VK_RETURN : Entrée
+VK_SHIFT : Touche de contrôle MAJ
+VK_CONTROL : Touche de contrôle CTRL
+VK_MENU : Touche de contrôle ALT
+VK_PAUSE : Pause
+VK_ESCAPE : Echappement
+VK_SPACE : Barre d'espacement
+VK_PRIOR : Page Haut
+VK_NEXT : Page Bas
+VK_END : Fin
+VK_HOME : Début
+VK_LEFT : Flèche gauche
+VK_UP : Flèche haut
+VK_RIGHT : Flèche droite
+VK_DOWN : Flèche bas
+VK_SNAPSHOT : Impression d'écran
+VK_INSERT : Insérer
+VK_DELETE : Supprimer
+VK_HELP : Aide
+VK_NUMPAD0..VK_NUMPAD9 : Touche pavé numérique 0 à 9
+VK_MULTIPLY : Touche pavé numérique *
+VK_ADD : Touche pavé numérique + 
+VK_SEPARATOR : Touche pavé numérique Entrée
+VK_SUBTRACT : Touche pavé numérique -
+VK_DECIMAL : Touche pavé numérique . (décimal)
+VK_DIVIDE : Touche pavé numérique /
+VK_F1..VK_F12 : Touches de fonction F1 à F12
+VK_NUMLOCK : Verrouillage pavé numérique
+VK_SCROLL : Verrouillage scrolling
+VK_CAPITAL : Verrouillage majuscules
+------------------------------------------------------------------------------------------------

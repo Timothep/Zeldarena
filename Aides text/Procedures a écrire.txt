@@ -1,0 +1,15 @@
+ NOM PROCEDURES 	| ETAT	| ROLE
+------------------------------------------------------------------------------
+ CONTACT_JOUEUR		| joe? 	| Détermine si le joueur est au contact d'une entité
+ CONTACT_ENNEMI		| joe?	| Détermine si l'entité qui est touchée est un ennemi
+ COMBAT_DESIRE		|  ok	| Détermine si la touche de combat est enfoncée ou non	
+ COMBAT			|	| Détermine les points de dommage qui sont infligés à l'ennemi, met à jours les différentes structures du joueur touché (Structures d'affichage y compris)
+ DEPLACEMENT_DESIRE	|  ok	| Détermine si une touche de déplacement est enfoncée ou non	
+ DEPLACEMENT_POSSIBLE 	|	| 	
+ DEPLACEMENT		|	| Met à jours les différentes structures du déplacement d'un joueur (Structures d'affichage y compris)	
+ INTERACTION_ARTEFACT	|incompl| Détermine si des points de bonification sont a prendre et les applique	
+ PRIORITE_COMBAT	|	| Détermine si la premiere variable de la structure des priorités est de combattre	
+ CASE_SUIVANTE_OCCUPEE	|	| Détermine si la case où souhaite se rendre le Bot est occupée	
+ CALCUL_NOUVEAU_CHEMIN	|	| Calcul du PathFinding		
+ MODULE_AFFICHAGE	|	| Affichage des élements à afficher en fonction du Timer
+ CHEMIN_AVARIE		|	| Verifie si l'extremite du chemin est encore valide

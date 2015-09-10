@@ -1,0 +1,45 @@
+      			
+			-----------==-------------
+
+$$$$$$ $$$$$$ $       $$$$$     $$$    $$$$$   $$$$$$ $     $    $$$
+    $  $      $       $    $   $   $   $    $  $      $$    $   $   $ 
+   $   $      $       $     $  $   $   $    $  $      $ $   $   $   $
+  $    $$$$   $       $     $ $$$$$$$  $  $$   $$$$   $  $  $  $$$$$$$
+ $     $      $       $     $ $     $  $   $   $      $   $ $  $     $
+$      $      $       $    $ $       $ $    $  $      $    $$ $       $
+$$$$$$ $$$$$$ $$$$$$$ $$$$$  $       $ $     $ $$$$$$ $     $ $       $
+			
+			-----------==-------------
+		     _________________________________
+	            |Developpé par Aamon et (T)Imothep|
+                    |	       EPF2 2003/2004 	      |      
+                     _________________________________
+
+       Version 7.2 B				Date : 05/04/04 
+						
+-----------------------------------------------------------------------
+
+Possibilités:
+Création de cartes ------------------------------- ok
+Enregistrement ok -------------------------------- ok
+Chargement et modifications de cartes ------------ ok
+Création de joueurs ------------------------------ ok
+Enregistrement et chargement --------------------- ok
+Fiche de chargement du jeu ----------------------- ok
+Affichage des cartes ----------------------------- ok
+Affichage des artefacts et des joueurs ----------- ok
+Mouvements des joueurs --------------------------- ok
+Collisions avec l'environnement ------------------ ok
+Attaques des joueurs ----------------------------- ok
+Décallage des joueurs touchés -------------------- ok
+Affichage de la vie ------------------------------ ok
+Mise a jour de la liste des priorités ------------ ok
+Calculs des différents chemins ------------------- ok
+Jeu en multijoueur de 1 à 4 joueurs -------------- ok
+
+Voir crédits pour plus d'informations
+
+
+
+
+

@@ -1,0 +1,57 @@
+//*****************************************************************************//
+//===============================BOUCLE DU TIMER===============================//
+//*****************************************************************************//
+
+{Procédure principale du jeu, Schéma coordinatif de l'ensemble du jeu}
+procedure TF_Jeu.Timer1Timer(Sender: TObject);
+begin
+//Randomisation de l'ordre de passage
+//On fait la boucle pour tous les joueurs
+        If pcour^.GETACTIF=true //Si le joueur est actif
+                then //alors on peut agir sur lui (actif)
+                        If pcour^.Chemin=nil //Si le joueur est humain
+                                 then //Alors test de contact
+                                        If CONTACT_JOUEUR //Si le joueur est au contact
+                                                then //Alors il faut déterminer ce qu'il touche
+                                                        If CONTACT_ENNEMI //Si il touche un ennemi
+                                                                then //Alors combat possible
+                                                                        If COMBAT_DESIRE //Si combat désiré (touche frapper enfoncée)
+                                                                                then //Alors module de combat et mise a jour de la structure d'affichage
+                                                                                        COMBAT
+                                                                                else //Sinon déplacement
+                                                                                        If DEPLACEMENT_DESIRE //Si déplacement désiré (touche déplacement enfoncée) et déplacement possible
+                                                                                                then //Alors déplacement et mise a jour de la structure d'affichage
+                                                                                                        DEPLACEMENT
+                                                                Else //Sinon interaction avec un artefact
+                                                                        INTERACTION_ARTEFACT
+                                                Else//Sinon déplacement possible
+                                                        If DEPLACEMENT_DESIRE//Si déplacement désiré (touche déplacement enfoncée) et déplacement possible
+                                                                Then //Alors déplacement et mise a jour de la structure d'affichage
+                                                                        DEPLACEMENT
+                                Else//Sinon c'est un bot
+                                        If CONTACT_JOUEUR//Si le bot est au contact
+                                                then //Alors il faut déterminer ce qu'il touche
+                                                        If CONTACT_ENNEMI //Si il touche un ennemi
+                                                                then //Alors combat possible
+                                                                        if PRIORITE_COMBAT=true //Si combat désiré (1°Element de la liste des priorités)
+                                                                                then //Alors module de combat
+                                                                                        COMBAT
+                                                                                else //Sinon déplacement possible
+                                                                                        If CASE_SUIVANTE_OCCUPEE=true//Si la case suivante est occupée
+                                                                                                then //Alors calcul d'un nouveau chemin
+                                                                                                        CALCUL_NOUVEAU_CHEMIN
+                                                                                        DEPLACEMENT //Déplacement avec mise a jour de la structure d'affichage
+                                                                Else //Sinon interaction avec un artefact
+                                                                        INTERACTION_ARTEFACT
+                                                Else//Sinon déplacement
+                                                        If CASE_SUIVANTE_OCCUPEE=true//Si la case suivante est occupée
+                                                                then //Alors calcul d'un nouveau chemin
+                                                                        CALCUL_NOUVEAU_CHEMIN
+                                                        DEPLACEMENT //Déplacement avec mise a jour de la structure d'affichage
+                //Sinon on ne peut pas agir sur lui (inactif)
+MODULE_AFFICHAGE //Affichage des élements a afficher en fonction du Timer
+end;
+
+//*****************************************************************************//
+//===============================FIN BOUCLE DU TIMER===========================//
+//*****************************************************************************//

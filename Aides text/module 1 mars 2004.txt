@@ -1,0 +1,89 @@
+//*****************************************************************************//
+//===============================BOUCLE DU TIMER===============================//
+//*****************************************************************************//
+
+{Procédure principale du jeu, Schéma coordinatif de l'ensemble du jeu}
+procedure TF_Jeu.Timer1Timer(Sender: TObject);
+Var
+Pcour_joueur:T_ptr_VD_Joueur; //Pointeur visant le joueur courant dans la FA des Joueurs (4 VD)
+Joueur:integer; //variable compteur des joueurs (car la liste des joueurs est un cycle donc il faut compter les joueurs au passage)
+direction:string; //variable revenant du module de vérif du déplacement avec la direction choisie (Up,Dw,Le,Ri)
+ligne,colonne: //coordonnées de la case avec laquelle on est en contact
+begin
+//Randomisation de l'ordre de passage
+pcour_joueur:=PPremier_joueur; //Selection du premier joueur
+//Boucle générale
+For Joueur:=1 to NB_JOUEURS do //On fait la boucle pour tous les joueurs
+        Begin
+        If pcour_joueur^.GETACTIF=true //Si le joueur est actif
+                then //alors on peut agir sur lui (actif)
+                        If pcour_joueur^.Chemin=nil //Si le joueur est humain
+                                 then //Alors test de contact
+                         {a faire} ---  If CONTACT_JOUEUR //Si le joueur est au contact
+                                                then //Alors il faut déterminer ce qu'il touche
+                         {a faire}  ------------------- If CONTACT_ENNEMI //Si il touche un ennemi
+                                                                then //Alors combat possible
+                         {ok}  ---------------------------------------  If COMBAT_DESIRE //Si combat désiré (touche frapper enfoncée)
+                                                                                then //Alors module de combat et mise à jour de la structure d'affichage
+                         {a faire} ---------------------------------------------------  COMBAT
+                                                                                else //Sinon déplacement
+                         {ok}  ------------------------------------------------------   If DEPLACEMENT_DESIRE(Direction); //Si déplacement désiré (touche déplacement enfoncée) et déplacement possible
+                                                                                                then //Alors déplacement et mise a jour de la structure d'affichage
+                         {a faire} -------------------------------------------------------------------  DEPLACEMENT
+                                                                Else //Sinon interaction avec un artefact
+                                                                        begin
+                                                                        //interaction avec l'artefact
+                         {Incomplet} ---------------------------------- INTERACTION_ARTEFACT(pcour_joueur,ligne,colonne)
+                                                                        //Possibilité de déplacement (pour éviter de rester sur la même case en permanence)
+                         {a faire} ------------------------------------ If (CASE_SUIVANTE_OCCUPEE=true) or (CHEMIN_AVARIE=true)//Si la case suivante est occupée ou si le chemin pointe sur "rien"
+                                                                                then //Alors calcul d'un nouveau chemin
+                         {a faire} ---------------------------------------------------- CALCUL_NOUVEAU_CHEMIN
+                         {a faire} ------------------------------------ DEPLACEMENT //Déplacement avec mise a jour de la structure d'affichage
+                                                                        end;
+                                                Else//Sinon déplacement possible
+                         {ok} ------------------------  If DEPLACEMENT_DESIRE(Direction);//Si déplacement désiré (touche déplacement enfoncée) et déplacement possible
+                                                                Then //Alors déplacement et mise a jour de la structure d'affichage
+                         {a faire} ------------------------------------ DEPLACEMENT
+                                Else//Sinon c'est un bot
+                         {a faire} ---- If CONTACT_JOUEUR//Si le bot est au contact
+                                                then //Alors il faut déterminer ce qu'il touche
+                         {a faire} -------------------- If CONTACT_ENNEMI //Si il touche un ennemi
+                                                                then //Alors combat possible
+                         {a faire} ------------------------------------ if PRIORITE_COMBAT=true //Si combat désiré (1°Element de la liste des priorités)
+                                                                                then //Alors module de combat
+                         {a faire} ---------------------------------------------------- COMBAT
+                                                                                else //Sinon déplacement possible
+                         {a faire} ---------------------------------------------------- If (CASE_SUIVANTE_OCCUPEE=true) or (CHEMIN_AVARIE=true)//Si la case suivante est occupée ou si le chemin pointe sur "rien"
+                                                                                                then //Alors calcul d'un nouveau chemin
+                         {a faire} -------------------------------------------------------------------- CALCUL_NOUVEAU_CHEMIN
+                         {a faire} ---------------------------------------------------  DEPLACEMENT //Déplacement avec mise a jour de la structure d'affichage
+                                                                Else //Sinon interaction avec un artefact
+                                                                        begin
+                                                                        //interaction avec l'artefact
+                         {Incomplet} ---------------------------------- INTERACTION_ARTEFACT(pcour_joueur,ligne,colonne)
+                                                                        //Possibilité de déplacement (pour éviter de rester sur la même case en permanence)
+                         {a faire} ------------------------------------ If (CASE_SUIVANTE_OCCUPEE=true) or (CHEMIN_AVARIE=true)//Si la case suivante est occupée ou si le chemin pointe sur "rien"
+                                                                                then //Alors calcul d'un nouveau chemin
+                         {a faire} ---------------------------------------------------- CALCUL_NOUVEAU_CHEMIN
+                         {a faire} ------------------------------------ DEPLACEMENT //Déplacement avec mise a jour de la structure d'affichage
+                                                                        end;
+                                                Else//Sinon déplacement
+                         {a faire} -------------------- If (CASE_SUIVANTE_OCCUPEE=true) or (CHEMIN_AVARIE=true)//Si la case suivante est occupée ou si le chemin pointe sur "rien"
+                                                                then //Alors calcul d'un nouveau chemin
+                         {a faire} ------------------------------------ CALCUL_NOUVEAU_CHEMIN
+                         {a faire} -------------------- DEPLACEMENT //Déplacement avec mise a jour de la structure d'affichage
+                                        //Mise à jour des cases à aller voir
+                         {a faire} ---- MISE_A_JOUR_CASES_A_VISITER
+                                        //Revue des priorités,
+                         {a faire} ---- If MISE_A_JOUR_PRIORITES=true //Si la priorité a changée
+                                                then //Alors calcul d'un nouveau chemin 
+                         {a faire} -------------------- CALCUL_NOUVEAU_CHEMIN
+        pcour_joueur:=pcour_joueur^.psuiv;
+        End;
+MODULE_AFFICHAGE //Affichage des élements a afficher en fonction du Timer
+PPremier_joueur:=PPremier_joueur^.psuiv;//Fin de la randomisation (feinte par cycle)
+end;
+
+//*****************************************************************************//
+//===============================FIN BOUCLE DU TIMER===========================//
+//*****************************************************************************//
